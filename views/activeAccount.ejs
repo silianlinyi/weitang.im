@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>微糖</title>
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="/css/semantic.css">
+    <link rel="stylesheet" href="/css/page1.css">
+    <link rel="stylesheet" type="text/css" href="/css/activeAccount.css"/>
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/icon/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <script src="/lib/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="main">
+        <div class="page_container">
+            <h1 class="ui center aligned header logo">微糖 - 分享知识，分享快乐</h1>
+            <div class="ui basic form segment">
+                <div class="field field1">
+                    <div class="ui inverted center aligned icon header">
+                        <i class="circular bolt icon"></i>
+                        <div class="sub header">该链接地址已失效，点击“<a href="javascript:void(0)" class="ui header">这里</a>”重新发送激活邮件</div>
+                    </div>
+                </div>
+                <div class="field field3">
+                    <div class="ui inverted center aligned icon header">
+                        <i class="ok sign icon"></i>发送成功
+                        <div class="sub header">系统已经向<span></span>发送了一封邮件，请查收邮件进行激活。</div>
+                    </div>
+                    <a href="/" class="ui fluid green button">马上登录</a>
+                </div>
+                <div class="field field2">
+                    <div class="ui left labeled icon input">
+                        <input type="email" class="email" id="email" placeholder="邮箱" autofocus required>
+                        <i class="mail icon"></i>
+                    </div>
+                </div>
+                <div class="field field2 codefield">
+                    <div class="ui input">
+                        <input type="text" placeholder="验证码" id="captcha">
+                    </div>
+                    <img src="" width="100" height="38" id="captchaImg">
+                    <a class="ui small header" href="javascript:void(0);" id="changeCaptcha">看不清</a>
+                </div>
+                <div class="ui small warning message">
+                    <i class="icon attention"></i>
+                </div>
+                <div class="field field2">
+                    <a class="ui fluid green submit button" id="activeAccount" href="javascript:void(0);">重新发送</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/sea.js" data-config="/lib/sea.config" data-main="/js/activeAccount" ></script>
+    
+</body>
+</html>

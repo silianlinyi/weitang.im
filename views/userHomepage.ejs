@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微糖</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/semantic.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/userHomepage.css">
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/icon/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <script src="/lib/jquery.js"></script>
+    <script src="/lib/semantic.js"></script>
+
+</head>
+<body>
+
+    <% include ./inc_topmenu.ejs %>
+
+    <div class="ui page grid mainpage">
+
+        <% if(r === 0) { %><!-- 用户存在 -->
+            <div class="four wide column">
+                <img class="rounded ui large image" src="<%= user.headimgurl || '/img/face.png' %>">
+                <h3 class="ui black header" style="margin-top: 10px;">
+                	<%= user.nickname || user.username %>
+                    <div class="sub header" style="margin-top: 10px;"><%= user.signature %></div>
+                </h3>
+                <div class="ui divider"></div>
+                
+                <div class="ui mini black list">
+					<div class="item">
+						<i class="mail outline icon"></i>
+						<div class="content">
+							<div class="header">
+								<%= user.email %>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<i class="map icon"></i>
+						<div class="content">
+							<div class="header">
+								Joined on <%= (new Date(user.createTime)).toLocaleDateString() %>
+							</div>
+						</div>
+					</div>
+				</div>
+                
+                <div class="ui divider"></div>
+                <div class="ui very black relaxed horizontal divided list">
+                    <a class="item" href="/user/<%= username %>/followers">
+                        <div class="content">
+                            <div class="header"><%= user.followerNum %></div>
+                            <div class="description">follower</div>
+                        </div>
+                    </a>
+                    <a class="item" href="/user/<%= username %>/following">
+                        <div class="content">
+                            <div class="header"><%= user.followingNum %></div>
+                            <div class="description">following</div>
+                        </div>
+                    </a>
+                    <a class="item">
+                        <div class="content">
+                            <div class="header"><%= user.score || 0 %></div>
+                            <div class="description">积分</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ui divider"></div>
+
+            </div>
+            <div class="twelve wide column">
+                <div class="ui tabular top attached menu">
+                    <a class="active item" data-tab="最近发布问题">最近发布问题</a>
+                    <a class="item" data-tab="最近参与问答">最近参与问答</a>
+                </div>
+                <div class="ui bottom attached segment">
+                    <div class="ui divided inbox selection list active tab" data-tab="最近发布问题">
+                        <a class="item">
+                            <div class="right floated date">Sep 14, 2013</div>
+                            <div class="description">Weekly Webcomic Wrapup fought the law, and the law won</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 14, 2013</div>
+                            <div class="description">Scientists discover new breed of dog</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 10, 2013</div>
+                            <div class="description">Dogs colony in Antarctica</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 09, 2013</div>
+                            <div class="description">Famous dog whisperer Chakotay dies today at 104</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 07, 2013</div>
+                            <div class="description">Top 10 Things to Know about Labradoodles</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 05, 2013</div>
+                            <div class="description">Study shows children enjoy the company of animals</div>
+                        </a>
+                    </div>
+                    <div class="ui divided inbox selection list tab" data-tab="最近参与问答">
+                        <a class="item">
+                            <div class="right floated date">Sep 14, 2013</div>
+                            <div class="description">Your favorite saved article</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 14, 2013</div>
+                            <div class="description">Your favorite saved article</div>
+                        </a>
+                        <a class="item">
+                            <div class="right floated date">Sep 14, 2013</div>
+                            <div class="description">Your favorite saved article</div>
+                        </a>
+                    </div>
+                </div>
+
+                <h4 class="ui top attached header">最新动态</h4>
+                <div class="ui segment attached">
+                    <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>
+                    <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+                </div>
+
+            </div>
+        <% } else { %><!-- 用户不存在 -->
+            <div class="sixteen wide column">
+                <div class="ui raised center aligned segment">
+                    <div class="ui header">用户不存在</div>
+                </div>
+            </div>
+            
+        <% } %>
+
+    
+        
+        
+
+
+        
+
+    </div>
+    
+    <% include ./inc_gotop.ejs %>
+    <% include ./inc_footer.ejs %>
+    
+        
+		
+    <script src="/lib/sea.js" data-config="/lib/sea.config" data-main="/js/userHomepage" ></script>
+        
+
+</body>
+</html>

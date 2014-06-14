@@ -1,0 +1,134 @@
+<div class="ui fixed transparent inverted main menu">
+    <div class="ui page grid">
+        <a href="/" class="icon item">
+            <i class="lemon icon"></i>&nbsp;微糖
+        </a>
+        <a href="/home" class="icon item linkHome">问答</a>
+        <a href="/topic" class="item linkTopic">话题</a>
+        <a href="/explore" class="item linkExplore">发现</a>
+
+        <div class="item">
+            <div class="ui icon input">
+                <input type="text" placeholder="搜索问题..." class="inputSearch" style="width: 220px;">
+                <i class="search icon"></i>
+            </div>
+        </div>
+
+        <a href="/ask" target="_blank" class="item">
+            <div class="ui teal button">提问</div>
+        </a>
+
+        <div class="right menu">
+            <div class="ui dropdown item">
+                <i class="icon user"></i>
+                <span id="username"><%= username %></span>
+                <i class="dropdown icon"></i>
+                <div class="menu ui transition hidden">
+                    <a href="/user/<%= username %>" class="item" id="myHomepage">
+                        <i class="user icon"></i>我的主页
+                    </a>
+                    
+ 					<div class="item">
+                        <i class="mail icon"></i>私信
+                    </div>
+                    <a href="/settings/profile" class="item">
+                        <i class="setting icon"></i>设置
+                    </a>
+                    <a href="/api/logout" class="item">
+                        <i class="off icon"></i>退出
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<i class="circular inverted large red bell outline icon"></i>
+
+<div class="ui small modal transition" style="width: 470px;margin-left: -235px;">
+    <i class="close icon"></i>
+    <div class="content">
+        <div class="ui header">
+            您的邮箱账号还未通过验证，马上去激活？
+            
+            <div class="sub header"></div>
+        </div>
+    </div>
+    <div class="actions">
+        <a href="/activeAccount" target="_blank" class="ui green button"> 重新发送邮件</a>
+        <a class="ui red button hasActive" href="javascript:void(0);">已经激活</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 顶部导航栏相关代码写在这里
+    // -------------------------------------------
+    $(function() {
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        var href = window.location.href;
+
+        if(/home/.test(href)) {
+            $('.linkHome').addClass('active');
+        };
+        if(/topic/.test(href)) {
+            $('.linkTopic').addClass('active');
+        }
+        if(/explore/.test(href)) {
+            $('.linkExplore').addClass('active');
+        }
+
+        // 搜索输入框聚焦与失去焦点事件
+        var $inputSearch = $('.inputSearch');
+        $inputSearch.focus(function() {
+            $inputSearch.animate({
+                width: '320'
+            }, 300);
+        });
+
+        $inputSearch.blur(function() {
+            $inputSearch.animate({
+                width: '220'
+            }, 300);
+        });
+
+        $('.bell.icon').click(function() {
+            $('.small.modal').modal('show');
+        });
+
+        $('.hasActive').click(function() {
+            window.location.reload();
+        });
+        
+//      function getUserInfo() {
+//          $.ajax({
+//              url: '/api/getUserInfo',
+//              type: 'GET',
+//              timeout: 15000,
+//              success: function(data, textStatus, jqXHR) {
+//                  console.log(data);
+//                  var user;
+//                  if(data.r === 0) {
+//                      user = data.user;
+//                      // 用户未激活显示提示
+//                      if(!user.active) {
+//                          $('.bell.icon').show();
+//                      }
+//
+//                      $('#myHomepage').attr('href', '/user/' + user.username);
+//                  }
+//              },
+//              error: function(jqXHR, textStatus, errorThrown) {
+//
+//              }
+//          });
+//      }
+//
+//      getUserInfo();
+
+    });
+</script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微糖</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/semantic.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/home.css">
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/icon/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <script src="/lib/jquery.js"></script>
+    <script src="/lib/semantic.js"></script>
+</head>
+<body id="appHome">
+
+    <% include ./inc_topmenu.ejs %>
+    
+
+    <div class="ui page grid mainpage">
+        <div class="twelve wide column">
+            <h4 class="ui dividing header">
+                <i class="inbox icon"></i>
+                最新问题
+            </h4>
+            <div class="ui raised segment questionList">
+                <h3 class="ui teal center aligned header loading">
+                    <i class="loading icon"></i>
+                    离开电脑，休息一下，眺望下远处吧...
+                </h3>
+            </div>
+            <div class="bottom attached ui button loadMore">更多...</div>
+        </div>
+        <div class="four wide column">
+            <div class="ui horizontal icon divider" style="margin-top:19px;margin-bottom: 0;">
+                <i class="leaf icon"></i>
+            </div>
+            <div class="ui segment" style="margin-top: 10px;">
+                <div class="ui tiny header">这是什么网站？</div>
+                <p>这是一个专业面向开发者的技术问答社区，你可以在这里提出任何与开发相关的问题，并得到同行的解答和评价。</p>
+            </div>
+
+            <img src="/img/bg2.jpg" width="100%" alt="">
+            
+        </div>
+    </div>
+    
+    <% include ./inc_gotop.ejs %>
+    <% include ./inc_footer.ejs %>
+
+    <script type="text/template" id="questionTemp">
+        <h3 class="ui teal header">
+            <img class="ui avatar left floated image" src="/img/face.png" data-authorId="<?= authorId ?>">
+            <div class="content">
+                <a href="/question/<?= _id ?>" target="_blank" class="header"><?= title ?></a>
+                <div class="sub header">
+                    <? for(var i = 0; i < topics.length; i++) { ?>
+                        <a class="ui label"><?= topics[i] ?></a>
+                    <? } ?>
+                </div>
+            </div>
+        </h3>
+        <p><?= content ?><a href="/question/<?= _id ?>" target="_blank" class="seeall">查看全部</a></p>
+        <div class="ui text menu">
+            <div class="item">
+                <i class="comment icon"></i><?= answerCount ?>个回答
+            </div>
+            <div class="item">
+                <i class="unhide icon"></i><?= viewCount ?>次查看
+            </div>
+            <a href="javascript:void(0);" class="item heart">
+                <i class="heart red icon"></i>关注
+            </a>
+            <a href="javascript:void(0);" class="item bookmark">
+                <i class="bookmark red icon"></i>收藏
+            </a>
+            <a href="javascript:void(0);" class="item share">
+                <i class="share sign red icon"></i>分享
+            </a>
+        </div>
+        <div class="ui divider"></div>
+        <div class="ui top right attached label"><i class="time icon"></i><?= createTimeLocal ?></div>
+    </script>
+		
+    <script type="text/javascript" src="/lib/underscore.js"></script>
+    <script type="text/javascript" src="/lib/backbone.js"></script>
+    <script src="/lib/sea.js" data-config="/lib/sea.config" data-main="/js/home" ></script>
+
+</body>
+</html>
